@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sandbox</title>
+    <script>
+        // console.log をオーバーライドしてログ収集
+        const logs = [];
+        console.log = function (...args) {
+            logs.push(args.join(" "));
+            // 本来のconsoleにも出力（開発デバッグ用）
+            window.parent.postMessage({ type: "log", payload: args.join(" ") }, "*");
+        };
+
+        // エラー時もキャッチ
+        window.onerror = function (message, source, lineno, colno, error) {
+            window.parent.postMessage({ type: "error", payload: message }, "*");
+        };
+
+        // 親からコードを受け取って実行
+        window.addEventListener("message", (event) => {
+            if (event.data.type === "execute") {
+                logs.length = 0; // ログ初期化
+
+                try {
+                    eval(event.data.code);
+                    window.parent.postMessage({ type: "done", payload: logs }, "*");
+                } catch (e) {
+                    window.parent.postMessage({ type: "error", payload: e.message }, "*");
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
