@@ -9,7 +9,7 @@ import { Card } from "react-bootstrap";
 
 export default function HtmlLevel5() {
   const [code, setCode] = useState("<a>宝の地図を見る</a>");
-  const { isSafe, warningMessage } = useSafeHtml(code);
+  const { warningMessage } = useSafeHtml(code);
 
   return (
     <PageLayout>

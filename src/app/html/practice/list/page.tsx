@@ -8,7 +8,16 @@ import { fetchPracticePosts } from "@/app/api/practice";
 import { likePracticePost } from "@/app/api/practice";
 
 export default function PracticeListPage() {
-  const [posts, setPosts] = useState<any[]>([]);
+  type PracticePost = {
+    id: number;
+    title: string;
+    code: string;
+    good_count: number;
+    name: string;
+    description: string;
+  };
+
+  const [posts, setPosts] = useState<PracticePost[]>([]);
   const [loading, setLoading] = useState(true);
   const [likedPosts, setLikedPosts] = useState<string[]>([]);
 

@@ -11,7 +11,7 @@ export default function HtmlLevel3() {
   const [code, setCode] = useState(
     '<h1>モンスターが出現！</h1>\n\n<img src="/images/ここにmonster1やmonster2と入れてね.png" />'
   );
-  const { isSafe, warningMessage } = useSafeHtml(code);
+  const { warningMessage } = useSafeHtml(code);
 
   return (
     <PageLayout>

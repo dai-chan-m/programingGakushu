@@ -11,7 +11,7 @@ export default function HtmlLevel4() {
   const [code, setCode] = useState(
     "<h2>🤩私の好きなものリスト🤩</h2>\n<ul>\n<li></li>\n</ul>"
   );
-  const { isSafe, warningMessage } = useSafeHtml(code);
+  const { warningMessage } = useSafeHtml(code);
 
   return (
     <PageLayout>
