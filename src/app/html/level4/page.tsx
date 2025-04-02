@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import { CodeEditorHtml } from "@/components/CodeEditor";
+import CodeEditorHtml from "@/components/CodeEditorHtml";
 import HtmlPreview from "@/components/HtmlPreview";
 import { useSafeHtml } from "@/hooks/useSafeHtml";
 import { Card } from "react-bootstrap";

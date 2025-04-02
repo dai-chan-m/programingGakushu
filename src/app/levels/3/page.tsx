@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CodeEditor } from "@/components/CodeEditor";
+import CodeEditor from "@/components/CodeEditor";
 import RunButton from "@/components/RunButton";
 import ResultBox from "@/components/ResultBox";
 import ClearMessage from "@/components/ClearMessage";
