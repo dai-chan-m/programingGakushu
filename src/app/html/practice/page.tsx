@@ -129,7 +129,7 @@ export default function PracticePostPage() {
           <Alert variant="info">
             ✅ 投稿を受け付けました！内容を確認後、公開されます。
           </Alert>
-          <Link href="/practice/list" passHref legacyBehavior>
+          <Link href="/html/practice/list" passHref legacyBehavior>
             <a className="btn btn-lg btn-outline-primary rounded-pill fw-bold shadow-sm px-4 py-2">
               🌟 みんなの投稿を見る
             </a>

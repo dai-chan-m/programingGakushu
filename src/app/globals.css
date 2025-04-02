@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --background: #e4f7ef;
   --foreground: #171717;
 }
 
@@ -21,4 +21,123 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgb(171, 252, 255);
+  min-height: 100vh;
+}
+
+/* モダンなカード設計 */
+.modern-card {
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  color: #f5f5f5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ホームページのコンテナ */
+.prologue-container {
+  background: linear-gradient(135deg, #121212, #1e1e1e);
+  min-height: 100vh;
+  color: #f5f5f5;
+}
+
+.content-wrapper {
+  max-width: 900px;
+}
+
+/* モダンなタイトル */
+.modern-title {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #f5f5f5;
+  margin-bottom: 2rem;
+}
+
+.accent {
+  color: #3a86ff;
+  position: relative;
+  padding: 0 0.3rem;
+}
+
+/* セクションタイトル */
+.section-title {
+  font-weight: 600;
+  color: #3a86ff;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+/* 機能リスト */
+.feature-list {
+  list-style-type: none;
+  padding-left: 0.5rem;
+}
+
+.feature-list li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.feature-list li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #3a86ff;
+}
+
+/* リンクスタイル */
+.resource-link {
+  color: #61dafb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.resource-link:hover {
+  color: #3a86ff;
+  text-decoration: underline;
+}
+
+/* ボタンスタイル */
+.course-btn {
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  transition: all 0.2s ease;
+}
+
+.html-btn {
+  background-color: #e34c26;
+  color: white;
+}
+
+.html-btn:hover {
+  background-color: #f06529;
+  transform: translateY(-2px);
+}
+
+.js-btn {
+  background-color: #f0db4f;
+  color: #323330;
+}
+
+.js-btn:hover {
+  background-color: #f7df1e;
+  transform: translateY(-2px);
 }
