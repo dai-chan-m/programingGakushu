@@ -69,13 +69,13 @@ export default function Level2() {
       <h1 className="text-center fw-bold text-primary mb-3">
         💡 JavaScript - Level 2
       </h1>
-      <p className="text-center text-muted mb-4">if文を使って「扉が開いた！」と表示させよう！</p>
+      <p className="text-center text-muted mb-4">
+        if文を使って「扉が開いた！」と表示させよう！
+      </p>
 
       <Card className="bg-light border-start border-4 border-warning mb-4">
         <Card.Body>
-          <h5 className="fw-bold mb-2">
-            ✅ レベル2：条件分岐
-          </h5>
+          <h5 className="fw-bold mb-2">✅ レベル2：条件分岐</h5>
           <p>
             変数の値を変更し、if文内のコードが実行されるようにしましょう。
             出力の表示は「扉が開いた！」と出すために修正が必要です。
@@ -90,7 +90,7 @@ export default function Level2() {
         <HintBox
           hints={[
             "ifの中に処理を書くと、hasKey が true のときだけ実行されるよ！",
-            '出力には console.log("扉が開いた！"); を使おう！',
+            "出力には console.log(&ldquo;扉が開いた！&ldquo;); を使おう！",
           ]}
         />
         <GiveUpButton onGiveUp={handleGiveUp} />
@@ -110,8 +110,9 @@ export default function Level2() {
           {showExplanation && (
             <ExplanationBox>
               <p className="mb-1">
-                `if (hasKey) {}` の中に `console.log("扉が開いた！");`
-                を書くことで、 条件を満たした時だけ処理が実行されます。
+                `if (hasKey) {}` の中に
+                `console.log(&ldquo;扉が開いた！&ldquo;);` を書くことで、
+                条件を満たした時だけ処理が実行されます。
               </p>
               <p>
                 これは「条件分岐」と呼ばれる基本的なロジックで、
@@ -122,7 +123,7 @@ export default function Level2() {
 
           <div className="text-center mt-5">
             <Link href="/javascript/level3">
-              <Button 
+              <Button
                 variant="warning"
                 className="px-4 py-2 rounded-pill fw-bold text-dark"
               >

@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import Link from "next/link";
 
 export default function Prologue() {
@@ -42,7 +42,7 @@ export default function Prologue() {
                     href="https://developer.mozilla.org/ja/docs/Web/HTML"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-decoration-none"
+                    className="text-decoration-noneC"
                   >
                     HTML リファレンス（MDN）
                   </a>
