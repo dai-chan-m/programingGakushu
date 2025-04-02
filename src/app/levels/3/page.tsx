@@ -13,7 +13,7 @@ import GiveUpResult from "@/components/GiveUpResult";
 import { detectDangerousCode } from "@/utils/sanitizeCode";
 
 export default function Level3() {
-  const initialCode = `// healという関数を定義して、"HPが回復した！" と表示しよう`;
+  const initialCode = `// healという関数を定義して、&quot;HPが回復した！&quot; と表示しよう`;
 
   const [code, setCode] = useState(initialCode);
   const [result, setResult] = useState("");
@@ -45,7 +45,7 @@ export default function Level3() {
       }
 
       const originalLog = console.log;
-      console.log = (msg: any) => logs.push(String(msg));
+      console.log = (msg: string) => logs.push(String(msg));
 
       // heal() を固定で実行
       eval(code + "\nheal();");
@@ -64,12 +64,6 @@ export default function Level3() {
 
       const correctMessage = logs.includes("HPが回復した！");
 
-      const usedConsoleLog =
-        code.includes('console.log("HPが回復した！")') ||
-        code.includes("console.log('HPが回復した！')") ||
-        code.includes('" + name') ||
-        code.includes("${");
-
       if (correctMessage) {
         setResult(`✨ 回復魔法が発動した！HPが全快だ！💖\n\n${detailedResult}`);
         setCleared(true);
@@ -79,10 +73,12 @@ export default function Level3() {
           `🌀 魔力が足りない… heal 関数の中で正しく出力してみよう！\n\n${detailedResult}`
         );
       }
-    } catch (err: any) {
-      setResult(
-        `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
-      );
+    } catch (err) {
+      if (err instanceof Error) {
+        setResult(
+          `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
+        );
+      }
     }
   };
 
@@ -105,7 +101,7 @@ export default function Level3() {
         というメッセージを表示しよう！
         <br />
         <span className="text-sm text-gray-400">
-          ※ <code>heal();</code>{" "}
+          ※ <code>heal();</code>
           は下で自動的に呼び出されるから、関数の定義だけすればOKだよ！
           <br />※ <strong>console.log() を直接使って出力しないように！</strong>
         </span>
@@ -125,7 +121,7 @@ export default function Level3() {
         <HintBox
           hints={[
             "`function heal() { ... }` のように関数を定義しよう！",
-            '`console.log("HPが回復した！");` を関数の中に書くことで魔法が発動するよ！',
+            "`console.log(&quot;HPが回復した！&quot;);` を関数の中に書くことで魔法が発動するよ！",
             "`heal();` は自動的に呼び出されるから、定義だけでOK！",
             "console.log() を関数の外で使うと失格になるよ！",
           ]}

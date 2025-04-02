@@ -24,7 +24,7 @@ export default function Level2() {
     try {
       const logs: string[] = [];
       const originalLog = console.log;
-      console.log = (msg: any) => logs.push(String(msg));
+      console.log = (msg: string) => logs.push(String(msg));
       eval(code);
       console.log = originalLog;
 
@@ -45,10 +45,12 @@ export default function Level2() {
       } else {
         setResult(`🌀 鍵はあるけど…扉が開かない？\n\n${detailedResult}`);
       }
-    } catch (err: any) {
-      setResult(
-        `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
-      );
+    } catch (err) {
+      if (err instanceof Error) {
+        setResult(
+          `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
+        );
+      }
     }
   };
 
@@ -96,7 +98,7 @@ export default function Level2() {
           {showExplanation && (
             <ExplanationBox>
               <p className="mb-1">
-                `if (hasKey) {}` の中に `console.log("扉が開いた！");`
+                `if (hasKey) {}` の中に `console.log(&quot;扉が開いた！&quot;);`
                 を書くことで、 条件を満たした時だけ処理が実行されます。
               </p>
               <p>

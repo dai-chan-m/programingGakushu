@@ -17,7 +17,6 @@ export default function Level1() {
   const [code, setCode] = useState(initialCode);
   const [result, setResult] = useState("");
   const [cleared, setCleared] = useState(false);
-  const [showHint, setShowHint] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const [gaveUp, setGaveUp] = useState(false);
 
@@ -25,7 +24,7 @@ export default function Level1() {
     try {
       const logs: string[] = [];
       const originalLog = console.log;
-      console.log = (msg: any) => logs.push(String(msg));
+      console.log = (msg: string) => logs.push(String(msg));
       eval(code);
       console.log = originalLog;
 
@@ -46,10 +45,12 @@ export default function Level1() {
       } else {
         setResult(`🌀 うーん…まだ何かが違うみたいだ\n\n${detailedResult}`);
       }
-    } catch (err: any) {
-      setResult(
-        `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
-      );
+    } catch (err) {
+      if (err instanceof Error) {
+        setResult(
+          `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
+        );
+      }
     }
   };
 

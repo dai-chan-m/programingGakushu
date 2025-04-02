@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import HtmlPreview from "@/components/HtmlPreview";
 import { Container, Card, Button, Spinner } from "react-bootstrap";
 import { fetchPracticePosts } from "@/app/api/practice";
