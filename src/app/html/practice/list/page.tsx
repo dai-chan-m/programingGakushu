@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import HtmlPreview from "@/components/HtmlPreview";
 import { Container, Card, Button, Spinner } from "react-bootstrap";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_KEY!
-);
+import { fetchPracticePosts } from "@/app/api/practice";
+import { likePracticePost } from "@/app/api/practice";
 
 export default function PracticeListPage() {
   const [posts, setPosts] = useState<any[]>([]);
@@ -16,19 +13,18 @@ export default function PracticeListPage() {
   const [likedPosts, setLikedPosts] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const { data, error } = await supabase
-        .from("html_practice_posts")
-        .select("*")
-        .eq("is_public", true)
-        .order("created_at", { ascending: false });
-
-      if (!error && data) {
+    const load = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchPracticePosts();
         setPosts(data);
+      } catch (err) {
+        console.error("投稿取得失敗:", err);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
-    fetchPosts();
+    load();
   }, []);
 
   // 初期化（localStorage から取得）
@@ -43,11 +39,9 @@ export default function PracticeListPage() {
   const handleLike = async (postId: number) => {
     if (likedPosts.includes(String(postId))) return;
 
-    const { error } = await supabase.rpc("increment_good_count", {
-      post_id: postId,
-    });
+    try {
+      await likePracticePost(postId);
 
-    if (!error) {
       setPosts((prev) =>
         prev.map((post) =>
           post.id === postId
@@ -59,6 +53,8 @@ export default function PracticeListPage() {
       const updated = [...likedPosts, String(postId)];
       setLikedPosts(updated);
       localStorage.setItem("liked_posts", JSON.stringify(updated));
+    } catch (err) {
+      console.error("いいね失敗:", err);
     }
   };
 
