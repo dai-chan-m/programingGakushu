@@ -16,7 +16,7 @@ export default function HtmlPreview({ html, warning }: Props) {
         </Alert>
       ) : (
         <div
-          className="border rounded p-4 bg-white"
+          className="border rounded p-3 bg-white"
           style={{ minHeight: "60px" }}
           dangerouslySetInnerHTML={{ __html: html }}
         />
