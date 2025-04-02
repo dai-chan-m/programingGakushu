@@ -32,7 +32,7 @@ export default function Level5() {
 
       const logs: string[] = [];
       const originalLog = console.log;
-      console.log = (msg: any) => logs.push(String(msg));
+      console.log = (msg: string) => logs.push(String(msg));
       eval(code);
       console.log = originalLog;
 
@@ -42,43 +42,57 @@ export default function Level5() {
         "鍵2を見つけた！",
         "鍵3を見つけた！",
         "鍵4を見つけた！",
-        "鍵5を見つけた！"
+        "鍵5を見つけた！",
       ];
 
       // 全ての期待する出力が順番通りにあるかチェック
-      const allOutputsPresent = expectedOutputs.every((output, index) => 
-        logs[index] === output
+      const allOutputsPresent = expectedOutputs.every(
+        (output, index) => logs[index] === output
       );
-      
+
       // for文を使っているかチェック
       const usedForLoop = code.includes("for (") || code.includes("for(");
 
       // 実行結果の詳細を表示用に加工
       let detailedResult = "";
       if (logs.length > 0) {
-        detailedResult = "【出力結果】\n" + logs.map((log, index) => `${index + 1}. ${log}`).join("\n");
+        detailedResult =
+          "【出力結果】\n" +
+          logs.map((log, index) => `${index + 1}. ${log}`).join("\n");
       } else {
         detailedResult = "【出力結果】\n何も出力されませんでした";
       }
 
       if (allOutputsPresent && usedForLoop) {
-        setResult(`✨ 全ての鍵を見つけた！隠し扉が開いた！🚪\n\n${detailedResult}`);
+        setResult(
+          `✨ 全ての鍵を見つけた！隠し扉が開いた！🚪\n\n${detailedResult}`
+        );
         setCleared(true);
         setShowExplanation(true);
       } else if (!usedForLoop) {
-        setResult(`🌀 for文を使って繰り返し処理をしよう！\n\n${detailedResult}`);
+        setResult(
+          `🌀 for文を使って繰り返し処理をしよう！\n\n${detailedResult}`
+        );
       } else {
-        setResult(`🌀 まだすべての鍵を見つけられていないようだ…\n\n${detailedResult}`);
+        setResult(
+          `🌀 まだすべての鍵を見つけられていないようだ…\n\n${detailedResult}`
+        );
       }
-    } catch (err: any) {
-      setResult(`❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`);
+    } catch (err) {
+      if (err instanceof Error) {
+        setResult(
+          `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
+        );
+      }
     }
   };
 
   const handleGiveUp = () => {
     setGaveUp(true);
     setShowExplanation(true);
-    setResult("😢 ギブアップ…でも繰り返しの魔法は学べたぞ！\n\n【正解例を表示します】");
+    setResult(
+      "😢 ギブアップ…でも繰り返しの魔法は学べたぞ！\n\n【正解例を表示します】"
+    );
   };
 
   return (
@@ -90,7 +104,8 @@ export default function Level5() {
         <strong>for文</strong>を使って、1から5までの数字を順番に表示しよう！
         <br />
         <span className="text-sm text-gray-400">
-          ※ 「鍵1を見つけた！」「鍵2を見つけた！」…と<strong>5つの鍵</strong>を見つけ出そう！
+          ※ 「鍵1を見つけた！」「鍵2を見つけた！」…と<strong>5つの鍵</strong>
+          を見つけ出そう！
         </span>
       </p>
 
@@ -123,7 +138,8 @@ export default function Level5() {
           {showExplanation && (
             <ExplanationBox>
               <p className="mb-1">
-                <code>for</code>文を使うことで、同じような処理を繰り返し実行できるようになりました！
+                <code>for</code>
+                文を使うことで、同じような処理を繰り返し実行できるようになりました！
               </p>
               <p>
                 繰り返し処理は、データの一覧処理や、同じパターンの処理を複数回行う時に

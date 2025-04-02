@@ -22,6 +22,7 @@ function getSecret() {
       console.log = () => {};
 
       let secret = "";
+      secret = "";
       eval(code + "\nsecret = getSecret();");
 
       console.log = originalLog;
@@ -35,8 +36,10 @@ function getSecret() {
       } else {
         setResult("🌀 何かが違う…呪文は「open sesame」だったはず…");
       }
-    } catch (err: any) {
-      setResult(`❌ エラー: ${err.message}`);
+    } catch (err) {
+      if (err instanceof Error) {
+        setResult(`❌ エラー: ${err.message}`);
+      }
     }
   };
 
@@ -55,7 +58,7 @@ function getSecret() {
       <p className="mb-4 text-gray-300">
         <code>getSecret</code> という関数を定義して、
         <br />
-        <strong className="text-green-300">"open sesame"</strong>{" "}
+        <strong className="text-green-300">&quot;open sesame&quot;</strong>
         を返すようにしてね！
       </p>
 
@@ -97,7 +100,7 @@ function getSecret() {
         <div className="mt-6 bg-black/40 p-4 rounded border border-purple-500">
           <h2 className="text-xl font-bold text-purple-300 mb-2">💡 解説</h2>
           <p className="text-gray-300">
-            関数内で return を使って <code>"open sesame"</code>{" "}
+            関数内で return を使って <code>&quot;open sesame&quot;</code>{" "}
             を返す必要があります。
             <br />
             例：
@@ -112,7 +115,7 @@ function getSecret() {
           <h2 className="text-xl font-bold text-red-400 mb-2">✅ 正解例</h2>
           <pre className="bg-black p-3 rounded border border-gray-700 text-green-200">
             {`function getSecret() {
-  return "open sesame";
+  return &quot;open sesame&quot;;
 }`}
           </pre>
         </div>
