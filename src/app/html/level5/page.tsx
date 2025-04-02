@@ -32,8 +32,10 @@ export default function HtmlLevel5() {
               <code>href</code> 属性に移動先のURLを書くよ！
             </li>
             <li>
-              たとえば{" "}
-              <code>&lt;a href="/html/level4"&gt;レベル４に戻る&lt;/a&gt;</code>{" "}
+              たとえば
+              <code>
+                &lt;a href=&quot;/html/level4&quot;&gt;レベル４に戻る&lt;/a&gt;
+              </code>
               と書くとレベル４に戻るリンクができるよ！（ちゃんとここ、レベル５に戻ってきてね💦）
             </li>
           </ul>
@@ -44,7 +46,7 @@ export default function HtmlLevel5() {
       </Card>
 
       <CodeEditorHtml
-        label='💡 HTMLコードを書いてみよう <a href="/html/treasure"> と書いてみると...???'
+        label='💡 HTMLコードを書いてみよう &lt;a href=&quot;/html/treasure&quot;&gt; と書いてみると...???'
         value={code}
         onChange={setCode}
       />

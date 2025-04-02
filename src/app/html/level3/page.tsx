@@ -17,7 +17,7 @@ export default function HtmlLevel3() {
     <PageLayout>
       <h1 className="text-primary fw-bold mb-3">🧱 HTMLの部屋 - Level 3</h1>
       <p className="text-muted mb-4">
-        画像を表示してみよう！<code>&lt;img&gt;</code>{" "}
+        画像を表示してみよう！<code>&lt;img&gt;</code>
         タグを使って、かわいいモンスターを呼び出そう！
       </p>
 
@@ -32,7 +32,8 @@ export default function HtmlLevel3() {
               <code>src</code> 属性で、表示したい画像のURLを指定するよ！
             </li>
             <li>
-              たとえば <code>&lt;img src="/images/monster.png" /&gt;</code>{" "}
+              たとえば{" "}
+              <code>&lt;img src=&quot;/images/monster.png&quot; /&gt;</code>{" "}
               と書くと…
             </li>
             <li>わあ！！モンスターが出現だ！！！！</li>

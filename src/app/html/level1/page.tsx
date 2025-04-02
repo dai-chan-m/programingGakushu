@@ -42,14 +42,18 @@ export default function HtmlLevel1() {
               ✅ <code>&lt;p&gt;</code>タグってなに？
             </h5>
             <ul>
-              <li>{"<p>"} は「段落」を作るタグだよ！</li>
+              <li>
+                <code>&lt;p&gt;</code>は「段落」を作るタグだよ！
+              </li>
               <li>この中に文字を書くと、ブラウザに表示されるんだ！</li>
               <li>
                 必ず、<code>&lt;/p&gt;</code>
                 のように閉じタグを最後につけるんだよ！
               </li>
               <li>
-                たとえば <code>{"<p>こんにちは！</p>"}</code> と書くと…
+                たとえば
+                <code>&quot;&lt;p&gt;こんにちは！&lt;/p&gt;&quot;</code>
+                と書くと…
               </li>
             </ul>
             <div className="border rounded mt-3 bg-white py-2 text-center fw-bold">
