@@ -12,7 +12,7 @@ import GiveUpButton from "@/components/GiveUpButton";
 import GiveUpResult from "@/components/GiveUpResult";
 
 export default function Level4() {
-  const initialCode = `// greetという関数を定義して、"こんにちは、ナナミ！" と表示しよう
+  const initialCode = `// greetという関数を定義して、&quot;こんにちは、ナナミ！&quot; と表示しよう
 // name はすでに定義されています。greet(name) も呼ばれています。`;
 
   const [code, setCode] = useState(initialCode);
@@ -26,10 +26,10 @@ export default function Level4() {
       const logs: string[] = [];
 
       const originalLog = console.log;
-      console.log = (msg: any) => logs.push(String(msg));
+      console.log = (msg: string) => logs.push(String(msg));
 
       // 固定スクリプトを実行時に追加
-      const fixedCall = `\nconst name = "ナナミ";\ngreet(name);`;
+      const fixedCall = `\nconst name = &quot;ナナミ&quot;;\ngreet(name);`;
       eval(code + fixedCall);
 
       console.log = originalLog;
@@ -48,8 +48,8 @@ export default function Level4() {
 
       const usedNameInOutput =
         code.includes("console.log(name)") ||
-        code.includes('" + name') ||
-        code.includes('name + "') ||
+        code.includes("&quot; + name") ||
+        code.includes("name + &quot;") ||
         code.includes("${name}");
 
       if (correctMessage && usedNameInOutput) {
@@ -67,10 +67,12 @@ export default function Level4() {
           `🌀 扉は沈黙したままだ…。あいさつが違う or 関数が正しくないかも？\n\n${detailedResult}`
         );
       }
-    } catch (err: any) {
-      setResult(
-        `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
-      );
+    } catch (err) {
+      if (err instanceof Error) {
+        setResult(
+          `❌ エラー: ${err.message}\n\n【出力結果】\nエラーが発生したため実行できませんでした`
+        );
+      }
     }
   };
 
@@ -89,11 +91,12 @@ export default function Level4() {
       </h1>
       <p className="mb-4 text-gray-300">
         <strong>greet</strong> という関数を定義して、
-        <code className="ml-1">こんにちは、ナナミ！</code>{" "}
+        <code className="ml-1">こんにちは、ナナミ！</code>
         というメッセージを表示しよう！
         <br />
         <span className="text-sm text-gray-400">
-          ※ <code>const name = "ナナミ";</code> と <code>greet(name);</code>{" "}
+          ※ <code>const name = &quot;ナナミ&quot;;</code> と
+          <code>greet(name);</code>
           はすでに用意されています。
         </span>
       </p>
@@ -113,7 +116,7 @@ greet(name);`}
         <HintBox
           hints={[
             "`function greet(name) { ... }` のように関数を定義してみよう！",
-            '`console.log("こんにちは、" + name + "！");` のように引数 name を使ってみよう！',
+            "`console.log(&quot;こんにちは、&quot; + name + &quot;！&quot;);` のように引数 name を使ってみよう！",
             "固定コードで `greet(name)` が呼ばれるから、関数だけ定義すればOKだよ！",
           ]}
         />
@@ -124,7 +127,7 @@ greet(name);`}
 
       {gaveUp && (
         <GiveUpResult
-          answerCode={`function greet(name) {\n  console.log("こんにちは、" + name + "！");\n}`}
+          answerCode={`function greet(name) {\n  console.log(&quot;こんにちは、&quot; + name + &quot;！&quot;);\n}`}
         />
       )}
 
@@ -135,7 +138,7 @@ greet(name);`}
             <ExplanationBox>
               <p className="mb-1">
                 <code>name</code> に渡された値を使って、関数の中で
-                `"こんにちは、ナナミ！"` を出力できたね！
+                `&quot;こんにちは、ナナミ！&quot;` を出力できたね！
               </p>
               <p>
                 引数で受け取った値を使ってメッセージを作ることができれば、
