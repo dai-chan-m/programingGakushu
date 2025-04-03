@@ -66,7 +66,7 @@ export default function Prologue() {
                   href="/javascript/level1"
                   className="w-100 py-3 rounded fw-bold text-white btn btn-info"
                 >
-                  💡 JavaScript コース
+                  💡 JavaScript コース  ※工事中です🚧少々お待ちください
                 </Link>
               </Col>
             </Row>

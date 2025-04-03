@@ -14,7 +14,7 @@ export default function CodeEditorHtml({
       <Form.Label className="fw-bold">{label}</Form.Label>
       <Form.Control
         as="textarea"
-        rows={6}
+        rows={10}
         className="font-monospace"
         value={value}
         onChange={(e) => onChange(e.target.value)}
