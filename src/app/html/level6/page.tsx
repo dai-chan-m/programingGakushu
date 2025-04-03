@@ -17,7 +17,7 @@ export default function HtmlLevel6() {
     <PageLayout>
       <h1 className="text-primary fw-bold mb-3">🧱 HTMLの部屋 - Level 6</h1>
       <p className="text-muted mb-4">
-        <code>&lt;input type="radio"&gt;</code> を使って、選択肢を作ってみよう！
+        <code>&lt;input type=&quot;radio&quot;&gt;</code> を使って、選択肢を作ってみよう！
       </p>
 
       <Card className="bg-light border-start border-4 border-info mb-4">
@@ -26,7 +26,7 @@ export default function HtmlLevel6() {
           <ul>
             <li>複数の選択肢の中から1つだけを選ぶ時に使うよ！</li>
             <li>
-              <code>type="radio"</code> を指定して、 複数の{" "}
+              <code>type=&quot;radio&quot;</code> を指定して、 複数の
               <code>&lt;input&gt;</code> に同じ <code>name</code> をつけよう！
             </li>
             <li>

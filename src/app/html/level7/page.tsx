@@ -17,7 +17,7 @@ export default function HtmlLevel6() {
     <PageLayout>
       <h1 className="text-primary fw-bold mb-3">🧱 HTMLの部屋 - Level 7</h1>
       <p className="text-muted mb-4">
-        <code>&lt;input&gt;</code>{" "}
+        <code>&lt;input&gt;</code>
         タグを使って、名前を入力する欄を作ってみよう！
       </p>
 
@@ -29,7 +29,7 @@ export default function HtmlLevel6() {
           <ul>
             <li>ユーザーから情報を入力してもらうためのタグだよ！</li>
             <li>
-              <code>type="text"</code> で文字入力用になる！
+              <code>type=&quot;text&quot;</code> で文字入力用になる！
             </li>
             <li>
               <code>&lt;label&gt;</code> と <code>&lt;input&gt;</code> は
@@ -38,7 +38,7 @@ export default function HtmlLevel6() {
               されるようになるよ！
             </li>
             <li>
-              <code>name="name"</code> もつけることで、
+              <code>name=&quot;name&quot;</code> もつけることで、
               フォーム送信時に入力内容をサーバー側で識別できるようになるよ！
             </li>
           </ul>

@@ -25,21 +25,21 @@ export default function HtmlLevel9() {
           <h5 className="fw-bold mb-2">✅ ここまでの復習！</h5>
           <ul>
             <li>
-              <code>&lt;input type="text"&gt;</code> で名前を入力！
+              <code>&lt;input type=&quot;text&quot;&gt;</code> で名前を入力！
             </li>
             <li>
-              <code>&lt;select&gt;</code> と <code>&lt;option&gt;</code>{" "}
+              <code>&lt;select&gt;</code> と <code>&lt;option&gt;</code>
               で職業選択！
             </li>
             <li>
-              <code>&lt;input type="radio"&gt;</code> で属性を選択！
+              <code>&lt;input type=&quot;radio&quot;&gt;</code> で属性を選択！
             </li>
             <li>
               <code>&lt;form&gt;</code> で全体をまとめて送信ボタン付き！
             </li>
             <li>
               <code>&lt;button&gt;</code> タグは「ボタン」を作るタグで、
-              <code>type="submit"</code>{" "}
+              <code>type=&quot;submit&quot;</code>
               をつけるとフォームを送信する役割になるよ！
             </li>
           </ul>
